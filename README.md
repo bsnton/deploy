@@ -16,18 +16,38 @@ git clone https://github.com/tonlabs/ton-labs-deploy-net.git	<br>
     fldnet [fldnet_validators] 配置节点信息
     
 `scripts/env.sh`<br>
-    export HOST_SSH_PORT=${HOST_SSH_PORT:-2223}<br>
-    export REMOTE_USER=${REMOTE_USER:-ruser}<br>
+```
+export HOST_SSH_PORT=${HOST_SSH_PORT:-2223}<br>
+export REMOTE_USER=${REMOTE_USER:-ruser}<br>
+```
     
 `ansible/group_vars/all.yaml`<br>
-	ansible_ssh_user: ruser<br>
-	ansible_port: 2223<br>
+```
+ansible_ssh_user: ruser<br>
+ansible_port: 2223<br>
+```
 * 创建 https://github.com/tonlabs/ton-1/tree/fld 的分支并自定义 crypto/smartcont/gen_wallets.sh（ruser在那里更改为您的 ssh 用户)
 
 ### 配置初始多重签名钱包
 * 创建https://github.com/tonlabs/ton-1/tree/fld的分支<br>
 * 在分叉中编辑https://github.com/tonlabs/ton-1/blob/fld/crypto/smartcont/InitWalletsFld.fif<br>
 在https://github.com/tonlabs/ton-1/blob/fld/crypto/smartcont/InitWalletsFld.fif 中您将看到一个钱包列表（这些钱包将被初始验证器节点使用），其形式为：<br>
-    // [wallets]<br>
-    entry "ZerostateMsig0" GR$6000001 "7a56f74315f7e1c7db2cf662603acad7beeba788fe6b20c9bb6dfd8abe262bcc" create-msig<br>
-    // [end]<br>
+```
+//[wallets]<br>
+entry "ZerostateMsig0" GR$6000001 "7a56f74315f7e1c7db2cf662603acad7beeba788fe6b20c9bb6dfd8abe262bcc" create-msig<br>
+// [end]<br>  
+```
+`ZerostateMsig0`是排序索引,`GR$6000001`是初始钱包余额,`7a56f74315f7e1c7db2cf662603acad7beeba788fe6b20c9bb6dfd8abe262bcc`钱包部署公钥。<br>
+要生成钱包，您应该按照以下步骤操作：
+```
+tonos-cli genphrase
+tonos-cli genpubkey "<seed_phrase>"
+```
+或生成密钥对并从那里获取公钥：
+```
+tonos-cli getkeypair msig.keys.json "<seed_phrase>"
+```
+对主钱包执行相同操作：
+```
+giver "Ref" ref-addr GR$5000000000 "553f9351ca08417c8c338413c2fd4b30eb7f6d35694e3e1b8ceb3d5729a34520" create-spec-giver
+```
