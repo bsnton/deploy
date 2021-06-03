@@ -1,4 +1,4 @@
-deploy 中文文档
+Free Ton deploy中文文档
 ====
 部署环境：ubuntu20.04
 #### 安装部署
