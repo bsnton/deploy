@@ -1,14 +1,14 @@
 deploy 中文文档
-===========
+====
 部署环境：ubuntu20.04
-### 安装部署
+#### 安装部署
 * 在管理节点主机上安装Ansible
 * 为所有节点创建ruser用户，为Ansible管理主机配置ruser免密码ssh登录到其他节点
 * 所有节点主机安装docker,	docker-compose <br>
 git clone https://github.com/tonlabs/ton-labs-deploy-net.git	<br>
 ---
 
-### 修改环境参数
+#### 修改环境参数
 `ton-labs-deploy-net/scripts/env_profiles/env_fld_deploy_net.sh`<br>	
     export SDK_URL="" SDK_URL变量自定义 为DApp server的URL<br>	
 
@@ -51,3 +51,42 @@ tonos-cli getkeypair msig.keys.json "<seed_phrase>"
 ```
 giver "Ref" ref-addr GR$5000000000 "553f9351ca08417c8c338413c2fd4b30eb7f6d35694e3e1b8ceb3d5729a34520" create-spec-giver
 ```
+提交并将更改推送到您的 ton-1 叉中。
+* 为节点部署脚本创建一个fork https://github.com/tonlabs/net.ton.dev/tree/fld
+* 在fork https://github.com/tonlabs/net.ton.dev/blob/fld/scripts/env.sh 中编辑对节点源文件的引用：
+``````
+export TON_GITHUB_REPO="https://github.com/<your_fork>/ton-1.git"
+export TON_STABLE_GITHUB_COMMIT_ID="<your_branch>"  #默认fld，不需要修改。
+``````
+* 在网络部署脚本中编辑对节点部署脚本的引用： https://github.com/tonlabs/ton-labs-deploy-net/blob/master/docker-compose/node/build/Dockerfile ：
+```
+RUN git clone https://github.com/tonlabs/net.ton.dev.git && cd net.ton.dev && git checkout fld
+```
+****
+### 运行节点部署
+```
+cd scripts && ./deploy.sh
+```
+### 部署TONOS DApp Server
+* 请参阅https://docs.ton.dev/86757ecb2/p/472e61-run-dapp-server和https://github.com/tonlabs/TON-OS-DApp-Server
+
+
+### 部署钱包
+##### 安装tonos-cl 工具操作，方法查看链接：https://docs.ton.dev/86757ecb2/p/8080e6-tonos-cli
+* 从 https://github.com/tonlabs/ton-labs-contracts/tree/master/solidity/safemultisig和https://github.com/tonlabs/ton-labs-contracts/tree 
+下载 multisig部署文件(SafeMultisigWallet.tvc, SafeMultisigWallet.abi.json, SetcodeMultisigWallet.abi.json)/master/solidity/setcodemultisig  
+* 部署验证器钱包：WALLET_ADDRESS为msig.keys.json密钥对生成钱包地址 ( ) ：
+```
+tonos-cli genaddr SafeMultisigWallet.tvc SafeMultisigWallet.abi.json --setkey msig.keys.json --wc -1
+```
+```
+tonos-cli call "${WALLET_ADDRESS}" constructor "{\"owners\":[\"0x<custodian_pub_key>\"],\"reqConfirms\":1}" --abi SafeMultisigWallet.abi.json --sign msig.keys.json
+```
+
+* 部署主钱包：
+```
+tonos-cli call -1:7777777777777777777777777777777777777777777777777777777777777777 constructor '{"owners":["0x<custodian_pub_key>"],"reqConfirms":1}' --abi SetcodeMultisigWallet.abi.json --sign msig.keys.json
+```
+您可以使用来自msig.keys.jsonas 的公钥<custodian_pub_key>。
+
+* 根据 https://docs.ton.dev/86757ecb2/p/60448f-run-automated-validator-single-custodian 在每个验证器节点上配置钱包
