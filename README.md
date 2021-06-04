@@ -90,3 +90,5 @@ tonos-cli call -1:77777777777777777777777777777777777777777777777777777777777777
 您可以使用来自msig.keys.jsonas 的公钥<custodian_pub_key>。
 
 * 根据 https://docs.ton.dev/86757ecb2/p/60448f-run-automated-validator-single-custodian 在每个验证器节点上配置钱包
+
+---
