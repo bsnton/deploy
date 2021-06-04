@@ -5,7 +5,8 @@ Free Ton deploy中文文档
 * 在管理节点主机上安装Ansible
 * 为所有节点创建ruser用户，为Ansible管理主机配置ruser免密码ssh登录到其他节点
 * 所有节点主机安装docker,	docker-compose <br>
-git clone https://github.com/tonlabs/ton-labs-deploy-net.git	<br>
+* 节点开放 3030/tcp,30310/udp
+* git clone https://github.com/tonlabs/ton-labs-deploy-net.git	<br>
 ---
 
 #### 修改环境参数
