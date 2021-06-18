@@ -36,6 +36,5 @@ $ ./deploy.sh
 docker stop web.root
 docker stop proxy
 ```
-	安装nginx
-	apt install nginx
-	容器名：q-server，端口4000
+	安装nginx代理到q-server的端口4000，最好加https
+	访问 https://yourdomain/graphql  进行验证
