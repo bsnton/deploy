@@ -10,7 +10,7 @@ export EMAIL_FOR_NOTIFICATIONS="email@yourdomain.com"
 
 5. copy初始节点容器中的`ton-global.config.json`,在下面目录中
 ```
-/mount/persistent-volume/t-node-blockchain-configs/ton-global.config.json
+/mount/persistent-volume/t-node-blockchain-configs/etc/ton-global.config.json
 ```
 将其上传在github中，复制raw地址，例如`https://raw.githubusercontent.com/bsnton/deploy/main/ton-global.config.json`
 
