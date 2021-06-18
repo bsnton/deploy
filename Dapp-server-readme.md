@@ -31,7 +31,7 @@ $ ./deploy.sh
 
 ```
 7. 安装完成，代理q-server  
-***注意**：当前安装教程的proxy代理容器配置好像有问题，关闭以后自己手动代理*
+***注意**：当前安装教程的proxy代理容器配置好像有问题，停止web.root和proxy容器，手动代理*
 ```
 docker stop web.root
 docker stop proxy
