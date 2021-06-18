@@ -8,13 +8,13 @@ export EMAIL_FOR_NOTIFICATIONS="email@yourdomain.com"
 3. 添加`TON-OS-DApp-Server/docker-compose/statsd/.env `  
 	IntIP='your internet ip'
 
-5. copy初始节点容器中的`ton-global.config.json`,在下面目录中
+4. copy初始节点容器中的`ton-global.config.json`,在下面目录中
 ```
 /mount/persistent-volume/t-node-blockchain-configs/etc/ton-global.config.json
 ```
 将其上传在github中，复制raw地址，例如`https://raw.githubusercontent.com/bsnton/deploy/main/ton-global.config.json`
 
-6. 在`/TON-OS-DApp-Server/docker-compose/ton-node/build/entrypoint.sh
+5. 在`/TON-OS-DApp-Server/docker-compose/ton-node/build/entrypoint.sh
 `中
 
 用刚才上传的文件链接
