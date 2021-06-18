@@ -9,7 +9,7 @@ export EMAIL_FOR_NOTIFICATIONS="email@yourdomain.com"
 
 `IntIP='your internet ip'`
 
-4. copy容器中的`ton-global.config.json`,在下面目录中
+4. copy初始节点容器中的`ton-global.config.json`,在下面目录中
 ```
 /mount/persistent-volume/t-node-blockchain/configs/ton-global.config.json
 ```
