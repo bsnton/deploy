@@ -5,8 +5,9 @@
 export NETWORK_TYPE="${NETWORK_TYPE:-net.ton.dev}"
 export EMAIL_FOR_NOTIFICATIONS="email@yourdomain.com"
 ```
-3. 添加`TON-OS-DApp-Server/docker-compose/statsd/.env `
-	IntIP='your internet ip'
+3. 添加`TON-OS-DApp-Server/docker-compose/statsd/.env `  
+
+`IntIP='your internet ip'`
 
 4. copy容器中的`ton-global.config.json`,在下面目录中
 ```
