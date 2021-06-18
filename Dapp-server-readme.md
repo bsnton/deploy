@@ -8,7 +8,7 @@ export EMAIL_FOR_NOTIFICATIONS="email@yourdomain.com"
 3. 添加`TON-OS-DApp-Server/docker-compose/statsd/.env `  
 	IntIP='your internet ip'
 
-5. copy容器中的`ton-global.config.json`,在下面目录中
+5. copy初始节点容器中的`ton-global.config.json`,在下面目录中
 ```
 /mount/persistent-volume/t-node-blockchain/configs/ton-global.config.json
 ```
