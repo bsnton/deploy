@@ -90,4 +90,55 @@ tonos-cli call -1:77777777777777777777777777777777777777777777777777777777777777
 ```
 您可以使用来自msig.keys.jsonas 的公钥<custodian_pub_key>。
 
-* 根据 https://docs.ton.dev/86757ecb2/p/60448f-run-automated-validator-single-custodian 在每个验证器节点上配置钱包
+
+
+## 配置初始验证器validator钱包
+###### 参考: 配置validator钱包，根据 https://docs.ton.dev/86757ecb2/p/60448f-run-automated-validator-single-custodian 在每个验证器节点上配置钱包
+
+配置目录：
+`/root/ton-keys`
+
+ >**提示**：tonos-cli工具目录：`/ton/src/net.ton.dev/tonos-cli/target/release`*
+
+1.1 复制智能合约文件到ton-keys文件夹：
+`cp /ton/src/net.ton.dev/configs/SafeMultisigWallet.* ./`
+
+1.2 生命msig.keys.json和deploy.keys.json
+`tonos-cli getkeypair ~/ton-keys/msig.keys.json "<seed_phrase>"`
+`tonos-cli getkeypair ~/ton-keys/deploy.keys.json "<seed_phrase>"`
+
+1.3 配置tonos-cli默认Dapp server地址：
+`tonos-cli config --url https://ton.1024io.xyz`
+
+
+1.4 配置validator钱包
+```
+echo "-1:ffb4fa7da2f093ebbfc2b27d87372df57963fe3bf78656f87fa4b4f947356bfe" >~/ton-keys/$(hostname -f).addr
+```
+ >*注意：前面已经使用命令`tonos-cli genaddr SafeMultisigWallet.tvc SafeMultisigWallet.abi.json --setkey deploy.keys.json --wc -1`生成过钱包地址*
+
+以上操作就完成了，选举的定时任务build时已经配置。
+
+
+终于/root/ton-keys内包含：
+>SafeMultisigWallet.abi.json
+SafeMultisigWallet.tvc
+adnl.pub
+client
+client.pub
+deploy.keys.json
+elections
+keys_a
+keys_c
+keys_l
+keys_s
+keys_v
+liteserver.pub
+msig.keys.json
+node1.addr
+node1.ton5.addr
+server.pub
+tonos-cli.conf.json
+validator.pub
+
+可以在`/mount/persistent-volume/t-node-blockchain/logs/validator_msig.log`查看选举日志
