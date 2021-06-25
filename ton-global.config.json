@@ -1,0 +1,28 @@
+{
+    "@type": "config.global",
+    "dht": {
+        "@type": "dht.config.global",
+        "k": 6,
+        "a": 3,
+        "static_nodes": {
+            "@type": "dht.nodes",
+            "nodes": [
+{"@type":"dht.node","id":{"@type":"pub.ed25519","key":"SsoTPWHXIe4FhbH5D0NuoQg+18r1HpJ22Lny0QzIy7s="},"addr_list":{"@type":"adnl.addressList","addrs":[{"@type":"adnl.address.udp","ip":-1062731773,"port":30311}],"version":0,"reinit_date":0,"priority":0,"expire_at":0},"version":-1,"signature":"LwtcvSxbo/KntGVE69XyKbYCPsr1AY0H1bLgwIA0vy9AE6HdxhMJ/iMAjDmcepCB27QNazBbsXX419kgVHdnDg=="}
+,{"@type":"dht.node","id":{"@type":"pub.ed25519","key":"HYx/D9zQoURvSoWuQWbyVIukCjWrfyHCgNhIU44JuLI="},"addr_list":{"@type":"adnl.addressList","addrs":[{"@type":"adnl.address.udp","ip":-1062731772,"port":30311}],"version":0,"reinit_date":0,"priority":0,"expire_at":0},"version":-1,"signature":"j3PE8aMg5R7dSCFGWB7UwQNZX9exxwrxcDc4qmKqSVOQAXdE02XJD1hkA8PmYY0uASKmeSkaaocVdrln+eJHBQ=="}
+,{"@type":"dht.node","id":{"@type":"pub.ed25519","key":"SOD6RLat0c0ENDIYK2hPUFKcorQwABQh/fO/0XSsZ18="},"addr_list":{"@type":"adnl.addressList","addrs":[{"@type":"adnl.address.udp","ip":-1062731771,"port":30311}],"version":0,"reinit_date":0,"priority":0,"expire_at":0},"version":-1,"signature":"EcbUr2OvVM1y0lQlLIF3XdGnu6KbHq6FPZNjha/+dImSiLS51GFG/GUwgWdbLS6PAT/tlj3poch9++UeOxKYDQ=="}
+,{"@type":"dht.node","id":{"@type":"pub.ed25519","key":"QBOPuO26HHFL0yHcWG1b+JnW45+vsh5r4SJVdfiYjzA="},"addr_list":{"@type":"adnl.addressList","addrs":[{"@type":"adnl.address.udp","ip":-1062731770,"port":30311}],"version":0,"reinit_date":0,"priority":0,"expire_at":0},"version":-1,"signature":"RG5fXAtji3tLk63asRYq9SzS3GQRfSf0jkQCEW23VWh/x39x8qj3NUI9Dwa1qRLrNgy2uArNxEBSvYj0JpQ2AQ=="}
+,{"@type":"dht.node","id":{"@type":"pub.ed25519","key":"+xBJzz0GUV9Dji4AP2SgBLD+oxsNvUSMyi1Z/W32Dl8="},"addr_list":{"@type":"adnl.addressList","addrs":[{"@type":"adnl.address.udp","ip":-1062731769,"port":30311}],"version":0,"reinit_date":0,"priority":0,"expire_at":0},"version":-1,"signature":"tGikflii3wZfUrC8IMnkM3B+Tmyw+bMVbWu9c/9SvebMJ0/FFBFI7IxQi2Z5BsOAmNFcf2oasIEc48KRflYkAw=="}
+            ]
+        }
+    },
+    "validator": {
+        "@type": "validator.config.global",
+        "zero_state": {
+            "workchain": -1,
+            "shard": -9223372036854775808,
+            "seqno": 0,
+            "root_hash": "sjrJ293VvvjZ4WBRz1iiLNxSx4H6URqRxBgVQ1Pce0k=",
+            "file_hash": "CMnNTrWLxo5tKBU3kaP8UTmxFclT3pfLtc8QWpTFIOI="
+        }
+    }
+}
